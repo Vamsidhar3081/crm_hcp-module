@@ -1,0 +1,15 @@
+import axios from 'axios';
+
+const API = axios.create({ baseURL: 'http://localhost:8000/api' });
+
+export const agentChat = (message, interactionId, currentFormData) =>
+  API.post('/agent/chat', {
+    message,
+    interaction_id: interactionId || null,
+    current_form_data: currentFormData || null,
+  });
+
+export const saveInteraction = (data) => API.post('/interactions/', data);
+export const updateInteraction = (id, data) => API.put(`/interactions/${id}`, data);
+export const listInteractions = () => API.get('/interactions/');
+export const deleteInteraction = (id) => API.delete(`/interactions/${id}`);
