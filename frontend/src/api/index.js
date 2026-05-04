@@ -11,7 +11,7 @@ export const agentChat = (message, interactionId, currentFormData) =>
     current_form_data: currentFormData || null,
   });
 
-export const saveInteraction = (data) => API.post('/interactions/', data);
-export const updateInteraction = (id, data) => API.put(`/interactions/${id}`, data);
-export const listInteractions = () => API.get('/interactions/');
-export const deleteInteraction = (id) => API.delete(`/interactions/${id}`);
+export const saveInteraction = (data) => API.post('/agent/', data);
+export const updateInteraction = (id, data) => API.put(`/agent/${id}`, data);
+export const listInteractions = () => API.get('/agent/');
+export const deleteInteraction = (id) => API.delete(`/agent/${id}`);
