@@ -238,7 +238,7 @@ function ChatPanel({ onFollowUpsExtracted }) {
   );
 }
 
-function HistoryTab() {
+function HistoryTab({ onEdit }) {
   const dispatch = useDispatch();
   const { interactions } = useSelector(s => s.interaction);
   if (!interactions.length) return <div style={{ textAlign: 'center', color: '#6b7280', padding: 40 }}>No interactions logged yet.</div>;
@@ -258,7 +258,7 @@ function HistoryTab() {
           {i.topics_discussed && <div style={{ fontSize: 13, marginTop: 8 }}><strong>Topics:</strong> {i.topics_discussed}</div>}
           {i.outcomes && <div style={{ fontSize: 13, marginTop: 4 }}><strong>Outcomes:</strong> {i.outcomes}</div>}
           <button style={{ ...btnOutline, marginTop: 10 }}
-            onClick={() => { dispatch(updateForm(i)); dispatch(setSavedId(i.id)); }}>✏️ Edit</button>
+            onClick={() => { dispatch(updateForm(i)); dispatch(setSavedId(i.id)); onEdit(); }}>✏️ Edit</button>
         </SectionCard>
       ))}
     </div>
@@ -306,7 +306,7 @@ export default function App() {
       ) : (
         <div style={{ maxWidth: 800, margin: '0 auto', padding: '24px 20px' }}>
           <h2 style={{ fontSize: 20, fontWeight: 800, marginBottom: 20 }}>Interaction History</h2>
-          <HistoryTab />
+          <HistoryTab onEdit={() => setTab('log')} />
         </div>
       )}
     </div>
