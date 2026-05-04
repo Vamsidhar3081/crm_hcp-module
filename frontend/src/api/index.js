@@ -5,7 +5,7 @@ const API = axios.create({
 });
 
 export const agentChat = (message, interactionId, currentFormData) =>
-  API.post('/agent/chat', {
+  API.post('/interactions/chat', {
     message,
     interaction_id: interactionId || null,
     current_form_data: currentFormData || null,
